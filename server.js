@@ -26,7 +26,7 @@ app.use("/sessions", sessionsController);
 
 //ROUTES
 app.get("/", (req, res) => {
-    res.redirect("/users");
+    res.render("index.ejs");
 });
 
 // Database Connection Error / Success
