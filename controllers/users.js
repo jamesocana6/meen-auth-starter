@@ -7,6 +7,9 @@ const User = require ("../models/user.js");
 //I
 
 //N
+userRouter.get("/new", (req, res) => {
+    res.render("./users/new.ejs");
+})
 
 //D
 
