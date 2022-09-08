@@ -26,9 +26,10 @@ app.use("/sessions", sessionsController);
 
 //ROUTES
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+	res.render('index.ejs', {
+		currentUser: req.session.currentUser
+	});
 });
-
 // Database Connection Error / Success
 const db = mongoose.connection;
 db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
