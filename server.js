@@ -3,8 +3,10 @@ const app = express();
 require("dotenv").config()
 const PORT = process.env.PORT;
 const methodOverride = require("method-override");
+const session = require("express-session");
 const mongoose = require("mongoose");
 const usersController = require("./controllers/users.js");
+const sessionsController = require("./controllers/sessions.js");
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -14,7 +16,13 @@ mongoose.connect(process.env.DATABASE_URL, {
 //MIDDLEWARE 
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
 app.use("/users", usersController);
+app.use("/sessions", sessionsController);
 
 //ROUTES
 app.get("/", (req, res) => {
