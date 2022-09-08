@@ -7,6 +7,9 @@ const User = require("../models/user.js");
 //I
 
 //N
+sessionsRouter.get('/new', (req, res) => {
+    res.render("./sessions/new.ejs");
+});
 
 //D
 sessionsRouter.delete('/', (req, res) => {
